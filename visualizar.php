@@ -1,3 +1,7 @@
+<?php
+require_once "../exercicio-php-crud/src/funcoes_alunos.php";
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
