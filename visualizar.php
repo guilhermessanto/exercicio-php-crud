@@ -1,6 +1,7 @@
 <?php
-require_once "../exercicio-php-crud/src/funcoes_alunos.php";
-
+require_once "src/funcoes_alunos.php";
+$listaDeAlunos = lerAlunos($conexao);
+var_dump($listaDeAlunos)
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -21,7 +22,26 @@ para exibir a relação de alunos existentes no banco de dados.
 
 Obs.: não se esqueça de criar também os links dinâmicos para
 as páginas de atualização e exclusão. -->
-
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>NOME</th>
+                <th>PRIMEIRA NOTA</th>
+                <th>SEGUNDA NOTA</th>
+                <th>MEDIA</th>
+                <th>SITUACAO</th>
+            </thead>
+            <?php foreach($listaDeAlunos as $aluno){ ?>
+            <tbody> 
+                <td><?=$aluno['id'];?></td>
+                <td><?=$aluno['nome']?></td>
+                <td><?=$aluno['primeira']?></td>
+                <td><?=$aluno['segunda']?></td>
+                <td><?=$aluno['media']?></td>
+                <td><?=$aluno['situacao']?></td>
+            </tbody>
+            <?php } ?>
+        </table>
 
     <p><a href="index.php">Voltar ao início</a></p>
 </div>

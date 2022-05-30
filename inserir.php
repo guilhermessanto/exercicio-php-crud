@@ -1,3 +1,20 @@
+<?php
+require_once "src/funcoes_alunos.php";
+inserirAlunos($conexao,$nome,$primeira,$segunda,$media,$situacao);
+
+if(isset($_POST['inserir'])){
+    require_once "../src/funcoes-produtos.php";
+    $nome = filter_input(INPUT_POST,'nome', FILTER_SANITIZE_SPECIAL_CHARS);
+    $primeira = filter_input(INPUT_POST,'primeira', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    $segunda = filter_input(INPUT_POST,'segunda', FILTER_SANITIZE_NUMBER_FLOAT);
+    $media = filter_input(INPUT_POST,'media', FILTER_SANITIZE_NUMBER_FLOAT);
+    $situacao = filter_input(INPUT_POST,'situacao', FILTER_SANITIZE_SPECIAL_CHARS);
+
+    inserirAlunos($conexao, $nome, $primeira, $segunda, $media, $situacao);
+
+    header("location:listar.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,16 +31,16 @@
     <p>Utilize o formulário abaixo para cadastrar um novo aluno.</p>
 
 	<form action="#" method="post">
-	    <p><label for="nome">Nome:</label>
-	    <input type="text" id="nome" required></p>
+	    <p><label for="nome" >Nome:</label>
+	    <input type="text" id="nome" name="nome" required></p>
         
       <p><label for="primeira">Primeira nota:</label>
-	    <input type="number" id="primeira" step="0.1" min="0.0" max="10" required></p>
+	    <input type="number" id="primeira" name="primeira" step="0.1" min="0.0" max="10" required></p>
 	    
 	    <p><label for="segunda">Segunda nota:</label>
-	    <input type="number" id="segunda" step="0.1" min="0.0" max="10" required></p>
+	    <input type="number" id="segunda" name="segunda" step="0.1" min="0.0" max="10" required></p>
 	    
-      <button>Cadastrar aluno</button>
+      <button name="inserir">Cadastrar aluno</button>
 	</form>
 
     <hr>
