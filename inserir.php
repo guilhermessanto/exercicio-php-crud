@@ -27,7 +27,10 @@ if(isset($_POST['inserir'])){
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cadastrar um novo aluno - Exercício CRUD com PHP e MySQL</title>
-<link href="css/style.css" rel="stylesheet">
+<!-- bootstrap -->
+<link rel="stylesheet" href="css/bootstrap.css">
+<!-- meu css -->
+<link href="style.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
@@ -53,5 +56,7 @@ if(isset($_POST['inserir'])){
     <p><a href="index.php">Voltar ao início</a></p>
 </div>
 
+<!-- bootstrap -->
+<script src="js/bootstrap.bundle.js"></script>
 </body>
 </html>

@@ -32,7 +32,10 @@ if(isset($_POST['atualizar'])){
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atualizar dados - Exercício CRUD com PHP e MySQL</title>
-<link href="css/style.css" rel="stylesheet">
+<!-- bootstrap -->
+<link rel="stylesheet" href="css/bootstrap.css">
+<!-- meu css -->
+<link href="style.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
@@ -74,6 +77,8 @@ if(isset($_POST['atualizar'])){
 
 </div>
 
-<script src="js/media.js"></script>
+<script src="jsProprio/media.js"></script>
+<!-- bootstrap -->
+<script src="js/bootstrap.bundle.js"></script>
 </body>
 </html>
