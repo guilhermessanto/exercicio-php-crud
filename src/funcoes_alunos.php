@@ -2,7 +2,7 @@
 require_once "conexao.php";
 
 function lerAluno(PDO $conexao):array{
-    $sql = "SELECT id, nome, primeira, segunda,media, situacao FROM alunos ORDER BY nome";
+    $sql = "SELECT id, nome, primeira, segunda,media, situacao FROM alunos";
     try{
         $consulta = $conexao->prepare($sql);
         $consulta ->execute();
@@ -30,7 +30,7 @@ function inserirAluno(PDO $conexao, string $nome, float $primeira, float $segund
 } 
 
 function atualizarAluno(PDO $conexao, int $id, string $nome, float $primeira, float $segunda, float $media, string $situacao){
-    $sql = "UPDATE alunos SET id = :id, nome = :nome, primeira = :primeria, segunda = :segunda, media = :media, situacao = :situacao WHERE id  = :id ";
+    $sql = "UPDATE alunos SET id = :id, nome = :nome, primeira = :primeira, segunda = :segunda, media = :media, situacao = :situacao WHERE id  = :id ";
     try{
         $consulta = $conexao->prepare($sql);
         $consulta->bindParam(':id',$id,PDO::PARAM_INT);
@@ -68,3 +68,14 @@ function excluirAluno(PDO $conexao, int $id):void{
         die("Erro: ".$erro->getMessage());
     }
 }
+
+// function calculaMedia($primeira ,$segunda){
+//     $media = ($primeira + $segunda)/2; 
+//     if($media >= 7 ){
+//         $situacao = "Aprovado";
+//     }else{
+//         $situacao = "Reprovado";
+//     }
+//     return $media; 
+//     return $situacao; 
+// }
