@@ -31,16 +31,16 @@ as páginas de atualização e exclusão. -->
                 <th>MEDIA</th>
                 <th>SITUACAO</th>
             </thead>
-            <?php foreach($listaDeAlunos as $aluno){ ?>
             <tbody> 
+                <?php foreach($listaDeAlunos as $aluno){ ?>
                 <td><?=$aluno['id'];?></td>
                 <td><?=$aluno['nome']?></td>
                 <td><?=$aluno['primeira']?></td>
                 <td><?=$aluno['segunda']?></td>
                 <td><?=$aluno['media']?></td>
                 <td><?=$aluno['situacao']?></td>
-                <td><a href="atualizar.php">Atualizar</a></td>
-                <td><a href="excluir.php">excluir</a></td>
+                <td><a href="atualizar.php?id=<?=$aluno['id']?>">Atualizar</a></td>
+                <td><a class="excluir" href="excluir.php?id=<?= $aluno['id']?>">Excluir</a></td>
             </tbody>
             <?php } ?>
         </table>
@@ -48,5 +48,6 @@ as páginas de atualização e exclusão. -->
     <p><a href="index.php">Voltar ao início</a></p>
 </div>
 
+<script src="js/excluir.js"></script>
 </body>
 </html>
