@@ -1,7 +1,7 @@
 <?php
 require_once "src/funcoes_alunos.php";
-$listaDeAlunos = lerAlunos($conexao);
-var_dump($listaDeAlunos)
+$listaDeAlunos = lerAluno($conexao);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -39,6 +39,8 @@ as páginas de atualização e exclusão. -->
                 <td><?=$aluno['segunda']?></td>
                 <td><?=$aluno['media']?></td>
                 <td><?=$aluno['situacao']?></td>
+                <td><a href="atualizar.php">Atualizar</a></td>
+                <td><a href="excluir.php">excluir</a></td>
             </tbody>
             <?php } ?>
         </table>

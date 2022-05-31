@@ -1,7 +1,7 @@
 <?php
 require_once "conexao.php";
 
-function lerAlunos(PDO $conexao):array{
+function lerAluno(PDO $conexao):array{
     $sql = "SELECT id, nome, primeira, segunda,media, situacao FROM alunos ORDER BY nome";
     try{
         $consulta = $conexao->prepare($sql);
@@ -14,7 +14,7 @@ function lerAlunos(PDO $conexao):array{
 }
 
 
-function inserirAlunos(PDO $conexao, string $nome, float $primeira, float $segunda, float $media, string $situacao):void{
+function inserirAluno(PDO $conexao, string $nome, float $primeira, float $segunda, float $media, string $situacao):void{
     $sql = "INSERT INTO alunos (nome, primeira, segunda,media,situacao) VALUES (:nome,:primeira,:segunda,:media,:situacao)";
     try{
         $consulta = $conexao->prepare($sql);
@@ -28,3 +28,8 @@ function inserirAlunos(PDO $conexao, string $nome, float $primeira, float $segun
     die("Erro: ".$erro->getMessage());
 }
 } 
+
+function atualizarAluno(){
+
+
+}
