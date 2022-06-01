@@ -9,13 +9,8 @@ if(isset($_POST['inserir'])){
     $media = filter_input(INPUT_POST,'media', FILTER_SANITIZE_NUMBER_FLOAT);
     $situacao = filter_input(INPUT_POST,'situacao', FILTER_SANITIZE_SPECIAL_CHARS);
 
-    $media = ($primeira + $segunda)/2; 
-    if($media >= 7 ){
-        $situacao = "Aprovado";
-    }else{
-        $situacao = "Reprovado";
-    }
-
+    $media = calculaMedia($primeira , $segunda);
+    $situacao = verificaAprovacao($media);
     inserirAluno($conexao, $nome, $primeira, $segunda, $media, $situacao);
 
     header("location:visualizar.php");
@@ -33,27 +28,39 @@ if(isset($_POST['inserir'])){
 <link href="style.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-	<h1>Cadastrar um novo aluno </h1>
+<div >
+	<h1 class="text-center">Cadastrar um novo aluno </h1>
     <hr>
     		
-    <p>Utilize o formulário abaixo para cadastrar um novo aluno.</p>
+    <p class="text-center">Utilize o formulário abaixo para cadastrar um novo aluno.</p>
 
-	<form action="#" method="post">
-	    <p><label for="nome" >Nome:</label>
-	    <input type="text" id="nome" name="nome" required></p>
+	<div class="form-signin w-50 m-auto">
+        <form action="#" method="post">
+            <div class="form-floating">
+                <p>
+                    <label for="nome" >Nome:</label>
+                    <input class="form-control" type="text" id="nome" name="nome" required>
+                </p>
+            </div>
+                
+              <div class="form-floating">
+                    <p>
+                        <label for="primeira">Primeira nota:</label>
+                        <input class="form-control" type="number" id="primeira" name="primeira" step="0.1" min="0.0" max="10" required>
+                    </p>
+              </div>
         
-      <p><label for="primeira">Primeira nota:</label>
-	    <input type="number" id="primeira" name="primeira" step="0.1" min="0.0" max="10" required></p>
-	    
-	    <p><label for="segunda">Segunda nota:</label>
-	    <input type="number" id="segunda" name="segunda" step="0.1" min="0.0" max="10" required></p>
-	    
-      <button name="inserir">Cadastrar aluno</button>
-	</form>
+            <div class="form-floating">
+                <p><label for="segunda">Segunda nota:</label>
+                <input class="form-control" type="number" id="segunda" name="segunda" step="0.1" min="0.0" max="10" required></p>
+            </div>
+            
+              <button class="w-100 btn btn-lg btn-success" name="inserir">Cadastrar aluno</button>
+        </form>
+    </div>
 
     <hr>
-    <p><a href="index.php">Voltar ao início</a></p>
+    <p class="text-center" ><a class="btn btn-primary" href="index.php">Voltar ao início</a></p>
 </div>
 
 <!-- bootstrap -->

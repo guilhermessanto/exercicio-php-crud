@@ -2,6 +2,7 @@
 require_once "src/funcoes_alunos.php";
 $listaDeAlunos = lerAluno($conexao);
 
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -27,17 +28,16 @@ Obs.: não se esqueça de criar também os links dinâmicos para
 as páginas de atualização e exclusão. -->
         <div class="container">
             <table class="table">
-                <thead>
-                    <th>ID</th>
+                <thead>                   
                     <th>NOME</th>
                     <th>PRIMEIRA NOTA</th>
                     <th>SEGUNDA NOTA</th>
                     <th>MEDIA</th>
                     <th>SITUACAO</th>
                 </thead>
-                <tbody>
-                    <?php foreach($listaDeAlunos as $aluno){ ?>
-                    <td><?=$aluno['id'];?></td>
+                <tbody >
+                    <?php foreach($listaDeAlunos as $aluno){?>                         
+                    <tr class="<?=($aluno['media'] >= 7) ?' table-success ':'table-danger'; ?>" >                      
                     <td><?=$aluno['nome']?></td>
                     <td><?=$aluno['primeira']?></td>
                     <td><?=$aluno['segunda']?></td>
@@ -45,8 +45,9 @@ as páginas de atualização e exclusão. -->
                     <td><?=$aluno['situacao']?></td>
                     <td><a href="atualizar.php?id=<?=$aluno['id']?>" class="btn btn-success">Atualizar</a></td>
                     <td><a class="excluir btn btn-danger" href="excluir.php?id=<?= $aluno['id']?>" >Excluir</a></td>
+                    </tr>
+                    <?php } ?>
                 </tbody>
-                <?php } ?>
             </table>
         </div>
 

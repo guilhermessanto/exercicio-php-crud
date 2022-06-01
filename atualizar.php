@@ -13,13 +13,8 @@ if(isset($_POST['atualizar'])){
     $media = filter_input(INPUT_POST,'media', FILTER_SANITIZE_NUMBER_FLOAT);
     $situacao = filter_input(INPUT_POST,'situacao', FILTER_SANITIZE_SPECIAL_CHARS);
     
-    $media = ($primeira + $segunda)/2; 
-    if($media >= 7 ){
-        $situacao = "Aprovado";
-    }else{
-        $situacao = "Reprovado";
-    }
-    
+    $media = calculaMedia($primeira , $segunda);
+    $situacao = verificaAprovacao($media);
     atualizarAluno($conexao,$id, $nome, $primeira, $segunda, $media, $situacao);
     
     header("location:visualizar.php");
@@ -37,46 +32,55 @@ if(isset($_POST['atualizar'])){
 <!-- meu css -->
 <link href="style.css" rel="stylesheet">
 </head>
-<body>
-<div class="container">
-    <h1>Atualizar dados do aluno </h1>
-    <hr>
-    		
-    <p>Utilize o formulário abaixo para atualizar os dados do aluno.</p>
-
-    <form action="" method="post">
-        
-	    <p><label for="nome">Nome:</label>
-	    <input type="text" name="nome" id="nome" required value="<?=$aluno['nome']?>"></p>
-        
-        <p><label for="primeira">Primeira nota:</label>
-	    <input name="primeira" type="number" id="primeira" step="0.1" min="0.0" max="10" required value="<?=$aluno['primeira']?>" oninput="pegarNota()"></p>
-	    
-	    <p><label for="segunda">Segunda nota:</label>
-	    <input name="segunda" type="number" id="segunda" step="0.1" min="0.0" max="10" required value="<?=$aluno['segunda']?>"  oninput="pegarNota()"></p>
-
-        <p>
-        <!-- Campo somente leitura e desabilitado para edição.
-        Usado apenas para exibição do valor da média -->
-            <label for="media">Média:</label>
-            <input name="media" type="number" id="media" step="0.1" min="0.0" max="10"  value="<?=$aluno['media']?>" readonly disabled>
-        </p>
-
-        <p>
-        <!-- Campo somente leitura e desabilitado para edição 
-        Usado apenas para exibição do texto da situação -->
-            <label for="situacao">Situação:</label>
-	        <input type="text" name="situacao" id="situacao" value="<?=$aluno['situacao']?>" readonly disabled>
-        </p>
-	    
-        <button name="atualizar">Atualizar dados do aluno</button>
-	</form>    
+<body >
     
+    <h1 class="text-center">Atualizar dados do aluno </h1>
     <hr>
-    <p><a href="visualizar.php">Voltar à lista de alunos</a></p>
+    
+    <p class="text-center">Utilize o formulário abaixo para atualizar os dados do aluno.</p>
+    
+    <div class="form-signin w-50 m-auto" >
+        <form action="" method="post">
+            
+            <div class="form-floating">
+                <p><label for="nome">Nome:</label>
+                <input class="form-control" type="text" name="nome" id="nome" required value="<?=$aluno['nome']?>"></p>
+            </div>
+            
+            <div class="form-floating">
+                <p><label for="primeira">Primeira nota:</label>
+                <input name="primeira" class="form-control" type="number" id="primeira" step="0.1" min="0.0" max="10" required value="<?=$aluno['primeira']?>" oninput="pegarNota()"></p>
+            </div>
+            
+            <div class="form-floating">
+                <p><label for="segunda">Segunda nota:</label>
+                <input name="segunda" class="form-control" type="number" id="segunda" step="0.1" min="0.0" max="10" required value="<?=$aluno['segunda']?>"  oninput="pegarNota()"></p>
+            </div>
 
-</div>
+            <div class="form-floating">
+                <p>
+                <!-- Campo somente leitura e desabilitado para edição.
+                Usado apenas para exibição do valor da média -->
+                    <label for="media">Média:</label>
+                    <input name="media" class="form-control" type="number" id="media" step="0.1" min="0.0" max="10"  value="<?=$aluno['media']?>" readonly disabled>
+                </p>
+            </div>
 
+            <div class="form-floating">
+                <p>
+                <!-- Campo somente leitura e desabilitado para edição
+                Usado apenas para exibição do texto da situação -->
+                    <label for="situacao">Situação:</label>
+                    <input type="text" class="form-control" name="situacao" id="situacao" value="<?=$aluno['situacao']?>" readonly disabled>
+                </p>
+            </div>
+            
+            <button class="w-100 btn btn-lg btn-success" name="atualizar">Atualizar dados do aluno</button>
+        </form>    
+    <hr>
+    <p class="text-center"><a class="btn btn-primary" href="visualizar.php">Voltar à lista de alunos</a></p>
+    </div>
+    
 <script src="jsProprio/media.js"></script>
 <!-- bootstrap -->
 <script src="js/bootstrap.bundle.js"></script>

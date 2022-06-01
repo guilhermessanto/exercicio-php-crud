@@ -69,13 +69,24 @@ function excluirAluno(PDO $conexao, int $id):void{
     }
 }
 
-// function calculaMedia($primeira ,$segunda){
-//     $media = ($primeira + $segunda)/2; 
-//     if($media >= 7 ){
-//         $situacao = "Aprovado";
-//     }else{
-//         $situacao = "Reprovado";
-//     }
-//     return $media; 
-//     return $situacao; 
-// }
+function calculaMedia($primeira , $segunda){
+    $media = ($primeira + $segunda)/2; 
+    return $media; 
+}
+function verificaAprovacao($media){
+if($media >= 7 ){
+    $situacao = "Aprovado";
+}else{
+    $situacao = "Reprovado";
+}
+return $situacao; 
+}
+
+function classeAluno($media){
+    if($media == "Aprovado"){
+        $alunoRow = "table-success";
+    }else{
+        $alunoRow = "table-danger";
+    }
+    return $alunoRow;
+}
