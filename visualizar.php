@@ -10,10 +10,13 @@ $listaDeAlunos = lerAluno($conexao);
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lista de alunos - Exercício CRUD com PHP e MySQL</title>
+<!-- jquery -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 <!-- bootstrap -->
 <link rel="stylesheet" href="css/bootstrap.css">
 <!-- meu css -->
 <link href="style.css" rel="stylesheet">
+
 </head>
 <body>
 <div class="container">
@@ -27,13 +30,15 @@ para exibir a relação de alunos existentes no banco de dados.
 Obs.: não se esqueça de criar também os links dinâmicos para
 as páginas de atualização e exclusão. -->
         <div class="container">
-            <table class="table">
+            <table id="table_id" class="table display" >
                 <thead>                   
                     <th>NOME</th>
                     <th>PRIMEIRA NOTA</th>
                     <th>SEGUNDA NOTA</th>
                     <th>MEDIA</th>
                     <th>SITUACAO</th>
+                    <th></th>
+                    <th></th>
                 </thead>
                 <tbody >
                     <?php foreach($listaDeAlunos as $aluno){?>                         
@@ -60,5 +65,17 @@ as páginas de atualização e exclusão. -->
 <script src="jsProprio/excluir.js"></script>
 <!-- bootstrap -->
 <script src="js/bootstrap.bundle.js"></script>
+
+<script src="plugins/jquery-3.6.0.min.js"></script>
+<!-- jquery -->
+<script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
+
+
+<script>
+$(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+</script>
+
 </body>
 </html>
